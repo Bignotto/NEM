@@ -10,7 +10,6 @@ app.get('/',(req,res) => {
     res.send('Server UP and running!');
 })
 
-require('./controllers/projectController')(app);
-require('./controllers/authController')(app);
+require('./app/controllers/index')(app);
 
 app.listen(3000);
