@@ -61,3 +61,5 @@ typings/
 .next
 
 src/credentials/index.js
+.vscode/launch.json
+
