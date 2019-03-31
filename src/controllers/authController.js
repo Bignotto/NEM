@@ -6,6 +6,12 @@ const _config = require('../credentials');
 
 const router = express.Router();
 
+function generateToken(params = {}) {
+    return jwt.sign(params, _config.database.passwordHashSecret, {
+        expiresIn: 86400,
+    });
+}
+
 router.post('/register', async (req,res) => {
     const { email } = req.body;
     try {
@@ -15,7 +21,8 @@ router.post('/register', async (req,res) => {
         const user = await User.create(req.body);
         user.password = undefined;
 
-        return res.send({user});
+        res.send({user,
+            token: generateToken({id: user.id})});
     } catch (err) {
         console.log(err);
         return res.status(400).send({error: 'Register failed'});
@@ -34,10 +41,9 @@ router.post('/authenticate', async (req,res) => {
 
     user.password = undefined;
 
-    const token = jwt.sign({ id: user.id}, _config.database.passwordHashSecret, {
-        expiresIn: 86400,
-    });
-    res.send({user,token});
+
+    res.send({user,
+        token: generateToken({id: user.id})});
 })
 
 module.exports = app => app.use('/auth', router);
