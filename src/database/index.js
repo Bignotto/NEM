@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const _config = require('../credentials');
 
-mongoose.connect('mongodb+srv://developer:dev123@authtest-auk5w.mongodb.net/test?retryWrites=true',{ useNewUrlParser: true, useCreateIndex: true }, (err) => {
+mongoose.connect(_config.database.dataBaseUrl,{ useNewUrlParser: true, useCreateIndex: true }, (err) => {
     if(err) console.log(err);
 });
 mongoose.set('useFindAndModify', false);

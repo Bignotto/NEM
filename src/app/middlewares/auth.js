@@ -16,8 +16,9 @@ module.exports = (req, res, next) => {
         return res.status(401).send( {error: 'Bad, bad token'});
 
     jwt.verify(token,_config.database.passwordHashSecret, (err,decoded) => {
-        if(err)
-            return res.status(401).send({error: 'Invalid Token'});
+        if(err) {
+            return res.status(401).send({error: 'Invalid Token ' + err.name});
+        }
             
         req.userId = decoded.id;
 

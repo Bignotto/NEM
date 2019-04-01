@@ -11,7 +11,7 @@ const router = express.Router();
 
 function generateToken(params = {}) {
     return jwt.sign(params, _config.database.passwordHashSecret, {
-        expiresIn: 86400,
+        expiresIn: 3600,
     });
 }
 
@@ -101,6 +101,9 @@ router.post('/reset', async (req,res) => {
         
         if(!token)
             return res.status(400).send({ error: 'Invalid token...' });
+
+        if(token !== user.passwordResetToken)
+            return res.status(400).send({ error: 'Bad token...' });
         
         const now = new Date();
         if(now > user.passwordResetExpires)
@@ -108,7 +111,7 @@ router.post('/reset', async (req,res) => {
         
         user.password = password;
         await user.save();
-        res.send();
+        res.send({ deu: 'certo' });
 
     } catch (error) {
         if(error) {
