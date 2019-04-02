@@ -25,6 +25,17 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         select: false,
     },
+    userLevel: {
+        type: Number,
+        default: 0,
+        min: 0,
+        max: 100
+    },
+    userGroup: {
+        type: String,
+        default: 'users',
+        lowercase: true
+    },
     createdAt: {
         type: Date,
         default: Date.now,
