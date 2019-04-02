@@ -12,4 +12,6 @@ app.get('/',(req,res) => {
 
 require('./app/controllers/index')(app);
 
-app.listen(3000);
+app.listen(3000,()=>{
+    console.log('Server up and listeing on port 3000');
+});

@@ -62,7 +62,7 @@ router.post('/forget', async (req,res) => {
         const now = new Date();
         now.setHours(now.getHours() + 1);
 
-        await User.findOneAndUpdate(user.id, {
+        await User.findOneAndUpdate({'_id':user.id} , {
             '$set': {
                 passwordResetToken: token,
                 passwordResetExpires: now
@@ -79,11 +79,9 @@ router.post('/forget', async (req,res) => {
                 console.log(err);
                 return res.status(400).send({ error: 'Cant send email' });
             }
-            res.send();
+            res.send({deu: 'certo'});
         });
 
-        // console.log(token, now);
-        // res.send({ deu:'certo' });
     } catch (error) {
         console.log(error);
         return res.status(400).send({error: 'I cant... some error happend'});

@@ -7,4 +7,10 @@ credential.database = {
     'passwordHashSecret' : 'nonono'
 }
 
+credential.email = {
+    "host": "the mail smtp server",
+    "port": 0000, //the port
+    "user": "mail user name",
+    "pass": "mail password",
+}
 module.exports = credential;
