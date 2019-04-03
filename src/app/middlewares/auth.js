@@ -3,8 +3,10 @@ const _config = require('../../credentials');
 
 module.exports = (req, res, next) => {
     const authHandler = req.headers.authorization;
-    if(!authHandler)
+    if(!authHandler) {
         return res.status(401).send({ error: 'No Token Provided' });
+        //return next();
+    }
 
     const parts = authHandler.split(' ');
 

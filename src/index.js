@@ -8,9 +8,9 @@ app.use(bodyParser.urlencoded({ extended : false }));
 
 app.use(express.static('www'));
 
-app.get('/',(req,res) => {
-    res.send('Server UP and running!');
-})
+// app.get('/',(req,res) => {
+//     res.send('Server UP and running!');
+// })
 
 require('./app/controllers/index')(app);
 
