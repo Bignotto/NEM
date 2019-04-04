@@ -11,9 +11,11 @@ const router = express.Router();
 
 router.get('/', (req,res) => {
     const userId = req.userId;
-    //res.send({se: 'chegamos aqui', estamos: 'logados!',userId});
+    const errorMessage = req.query.errorMessage;
+
     res.render('login',{
         userId: userId,
+        errorMessage: errorMessage,
         pageTitle: 'Login',
         deu: 'certo!'
     });

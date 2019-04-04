@@ -1,5 +1,6 @@
 extends layout
 block content
+    p Erro: #{errorMessage}
     div(class='mainContent')
         div(class='box')
             form(action="/auth/authenticate", method="post")
