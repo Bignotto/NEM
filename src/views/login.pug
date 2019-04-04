@@ -1,0 +1,11 @@
+extends layout
+block content
+    div(class='mainContent')
+        div(class='box')
+            form(action="/auth/authenticate", method="post")
+                div
+                    input(type="email", name="email" class="button" placeholder="E-Mail Address")
+                div
+                    input(type="password", name="password" class="button" placeholder="Password")
+                div
+                    input(type="submit", value="Login" class="button")

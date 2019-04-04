@@ -1,0 +1,16 @@
+doctype html
+
+html
+    head
+        title #{pageTitle}
+        link(rel='stylesheet', href='/css/style.css')
+    body
+        header
+            div(class='top')
+                p #{pageTitle}
+        hr
+        block content
+        br
+        hr
+        footer
+            p Copyright &copy; 2019 Thiago Bignotto
