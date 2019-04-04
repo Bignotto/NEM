@@ -1,16 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const path = require('path');
+
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false }));
 
+//app.use(cookieParser);
+
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
 app.use(express.static('www'));
 
-app.get('/',(req,res) => {
-    res.send('Server UP and running!');
-})
+// app.get('/',(req,res) => {
+//     res.send('Server UP and running!');
+// })
 
 require('./app/controllers/index')(app);
 
