@@ -4,13 +4,15 @@ html
     head
         title #{pageTitle}
         link(rel='stylesheet', href='/css/style.css')
+        //- link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+        //- link(rel='stylesheet', href='https://code.getmdl.io/1.3.0/material.blue-indigo.min.css')
+        //- script(dafer src="https://code.getmdl.io/1.3.0/material.min.js")
+
     body
         header
-            div(class='top')
-                p #{pageTitle}
-        hr
-        block content
-        br
-        hr
+            //- div(class='top')
+            p #{pageTitle}
+        div(class='pageContainer')
+            block content
         footer
             p Copyright &copy; 2019 Thiago Bignotto
